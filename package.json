@@ -1,0 +1,19 @@
+{
+  "name": "Clickmeter",
+  "version": "0.0.1",
+  "description": "Clickmeter is a light library to handle the clicks and do actions in any element",
+  "main": "index.js",
+  "type": "module",
+  "files": [
+    "build/index.js"
+  ],
+  "scripts": {
+    "dev": "serve ./server -C -p 8080",
+    "test": "test"
+  },
+  "devDependencies": {
+    "serve": "^11.3.2"
+  },
+  "author": "harguello92",
+  "license": "ISC"
+}
