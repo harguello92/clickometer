@@ -1,9 +1,9 @@
 {
   "name": "clickometer",
   "author": "harguello92",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "Clickometer is a light library to handle the clicks and do actions in any element",
-  "main": "dist/clickometer.js",
+  "main": "dist/clickometer.min.js",
   "type": "module",
   "license": "MIT",
   "scripts": {
@@ -12,9 +12,9 @@
     "test": "jest"
   },
   "files": [
-    "dist/clickometer.browser.js",
-    "dist/clickometer.js",
-    "dist/clickometer.cjs",
+    "dist/clickometer.browser.min.js",
+    "dist/clickometer.min.js",
+    "dist/clickometer.min.cjs",
     "README.md",
     "index.js"
   ],
