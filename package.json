@@ -1,7 +1,7 @@
 {
   "name": "clickometer",
   "author": "harguello92",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "Clickometer is a light library to handle the clicks and do actions in any element",
   "main": "dist/clickometer.min.js",
   "type": "module",
