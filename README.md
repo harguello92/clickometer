@@ -35,7 +35,6 @@ import clickometer from "clickometer"
 
 clickometer({
   DOMElement: document,
-  animation: true,
   maxClicks: 5,
   timeInterval: 1000,
   onChange: ({ percentatge }) => {
