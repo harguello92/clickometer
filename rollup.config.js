@@ -24,7 +24,7 @@ const iifeJsConfig = {
   output: {
     file: "dist/clickometer.browser.min.js",
     format: "iife",
-    name: "Clickometer",
+    name: "clickometer",
   },
   plugins: [terser()],
 };
