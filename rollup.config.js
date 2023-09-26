@@ -4,7 +4,7 @@ import terser from "@rollup/plugin-terser";
 const moduleConfig = {
   input: "index.js",
   output: {
-    file: "dist/clickometer.js",
+    file: "dist/clickometer.min.js",
     format: "es",
   },
   plugins: [terser()],
@@ -13,7 +13,7 @@ const moduleConfig = {
 const commonJsConfig = {
   input: "index.js",
   output: {
-    file: "dist/clickometer.cjs",
+    file: "dist/clickometer.min.cjs",
     format: "cjs",
   },
   plugins: [terser()],
@@ -22,7 +22,7 @@ const commonJsConfig = {
 const iifeJsConfig = {
   input: "index.js",
   output: {
-    file: "dist/clickometer.browser.js",
+    file: "dist/clickometer.browser.min.js",
     format: "iife",
     name: "Clickometer",
   },
