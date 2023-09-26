@@ -31,18 +31,20 @@ pnpm add clickometer
 # Usage example
 
 ```JS
-  clickometer({
-    DOMElement: document,
-    animation: true,
-    maxClicks: 5,
-    timeInterval: 1000,
-    onChange: ({ percentatge }) => {
-      document.body.style.backgroundColor = "initial";
-      document.body.innerHTML = percentatge + "%";
-    },
-    onExceeded: ({ percentatge }) => {
-      document.body.style.backgroundColor = "red";
-      document.body.innerHTML = `¡Cuidado!, ${percentatge}% completado`;
-    },
-  });
+import clickometer from "clickometer"
+
+clickometer({
+  DOMElement: document,
+  animation: true,
+  maxClicks: 5,
+  timeInterval: 1000,
+  onChange: ({ percentatge }) => {
+    document.body.style.backgroundColor = "initial";
+    document.body.innerHTML = percentatge + "%";
+  },
+  onExceeded: ({ percentatge }) => {
+    document.body.style.backgroundColor = "red";
+    document.body.innerHTML = `¡Cuidado!, ${percentatge}% completado`;
+  },
+});
 ```
