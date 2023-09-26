@@ -19,13 +19,10 @@ const action = (config) => {
       clearInterval(interval);
       return;
     }
-    console.log("ok");
     appState.decrement();
     const responseData = buildResponseData({ state: appState, config });
     config.onChange(responseData);
   }, config.timeInterval);
-
-  console.log(interval);
 };
 
 export default (config) => {

@@ -48,13 +48,10 @@ const action = (config) => {
       clearInterval(interval);
       return;
     }
-    console.log("ok");
     state.decrement();
     const responseData = buildResponseData({ state: state, config });
     config.onChange(responseData);
   }, config.timeInterval);
-
-  console.log(interval);
 };
 
 var app = (config) => {
@@ -81,9 +78,24 @@ const defaultConfig = {
 
 const initConfig = (config) => ({ ...defaultConfig, ...config });
 
-var index = (customConfig) => {
+var clickometer = (customConfig) => {
   const config = initConfig(customConfig);
   app(config);
 };
 
-export { index as default };
+(() => {
+  clickometer({
+    DOMElement: document,
+    animation: true,
+    maxClicks: 5,
+    timeInterval: 1000,
+    onChange: ({ percentatge }) => {
+      document.body.style.backgroundColor = "initial";
+      document.body.innerHTML = percentatge + "%";
+    },
+    onExceeded: ({ percentatge }) => {
+      document.body.style.backgroundColor = "red";
+      document.body.innerHTML = `¡Cuidado!, ${percentatge}% completado`;
+    },
+  });
+})();

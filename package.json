@@ -1,22 +1,40 @@
 {
-  "name": "Clickmeter",
+  "name": "clickometer",
   "author": "harguello92",
-  "version": "0.0.1",
-  "description": "Clickmeter is a light library to handle the clicks and do actions in any element",
-  "main": "index.js",
+  "version": "1.0.0",
+  "description": "Clickometer is a light library to handle the clicks and do actions in any element",
+  "main": "dist/bundle.js",
   "type": "module",
-  "files": [
-    "build/index.js"
-  ],
+  "license": "MIT",
   "scripts": {
-    "build": "rollup --config",
-    "dev": "serve -C -p 8080",
+    "dev": "servor dist --reload --browse & rollup -c -w",
+    "build": "rollup -c",
     "test": "jest"
   },
+  "files": [
+    "dist/bundle.browser.js",
+    "dist/bundle.js",
+    "dist/bundle.cjs",
+    "README.md",
+    "index.js"
+  ],
+  "bugs": {
+    "url": "https://github.com/harguello92/clickometer/issues"
+  },
+  "homepage": "https://github.com/harguello92/clickometer#readme",
+  "keywords": [
+    "clickometer",
+    "vanilla"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/harguello92/clickometer"
+  },
   "devDependencies": {
+    "@rollup/plugin-html": "^1.0.2",
+    "@rollup/plugin-terser": "^0.4.3",
     "jest": "^29.6.4",
     "rollup": "^3.29.0",
-    "serve": "^11.3.2"
-  },
-  "license": "ISC"
+    "servor": "^4.0.2"
+  }
 }

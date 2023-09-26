@@ -1,8 +1,6 @@
 import clickometer from "./index.js";
 
 (() => {
-  // const percentatgeElement = document.querySelector(".app-percentatge");
-
   clickometer({
     DOMElement: document,
     animation: true,
