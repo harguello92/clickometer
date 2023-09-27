@@ -2,38 +2,61 @@ import appState from "./modules/state.js";
 import { events, customEvents } from "./modules/events.js";
 import { buildResponseData } from "./helpers/data.js";
 
-let interval = null;
+let currentInterval = 0;
 
-const action = (config) => {
-  const responseData = buildResponseData({ state: appState, config });
-
+const runIncrement = (config) => {
   if (appState.value === config.maxClicks) {
-    return config.onExceeded(responseData);
+    return config.onExceeded(buildResponseData({ state: appState, config }));
   }
 
   appState.increment();
-  config.onChange(responseData);
 
-  interval = setInterval(() => {
+  config.onChange(buildResponseData({ state: appState, config }));
+};
+
+const runInterval = (config) => {
+  clearInterval(currentInterval);
+
+  currentInterval = setInterval(() => {
     if (appState.value === 0) {
-      clearInterval(interval);
+      clearInterval(currentInterval);
+      currentInterval = null;
       return;
     }
+
     appState.decrement();
-    const responseData = buildResponseData({ state: appState, config });
-    config.onChange(responseData);
+
+    config.onChange(buildResponseData({ state: appState, config }));
   }, config.timeInterval);
 };
 
-export default (config) => {
-  events({
-    DOMElement: config.DOMElement,
-    action: () => action(config),
-  });
+const init = (config) => {
+  config.onChange(buildResponseData({ state: appState, config }));
+};
 
-  customEvents({
-    DOMElment: config.DOMElement,
-    events: config.events,
-    action: () => action(config),
-  });
+export default (config) => {
+  try {
+    init(config);
+
+    events({
+      DOMElement: config.DOMElement,
+      action: () => {
+        runIncrement(config);
+        runInterval(config);
+      },
+    });
+
+    customEvents({
+      DOMElment: config.DOMElement,
+      events: config.events,
+      action: () => {
+        runIncrement(config);
+        runInterval(config);
+      },
+    });
+
+    return true;
+  } catch (error) {
+    return false;
+  }
 };

@@ -31,40 +31,63 @@ const buildResponseData = ({ state, config }) => {
   };
 };
 
-let interval = null;
+let currentInterval = 0;
 
-const action = (config) => {
-  const responseData = buildResponseData({ state: state, config });
-
+const runIncrement = (config) => {
   if (state.value === config.maxClicks) {
-    return config.onExceeded(responseData);
+    return config.onExceeded(buildResponseData({ state: state, config }));
   }
 
   state.increment();
-  config.onChange(responseData);
 
-  interval = setInterval(() => {
+  config.onChange(buildResponseData({ state: state, config }));
+};
+
+const runInterval = (config) => {
+  clearInterval(currentInterval);
+
+  currentInterval = setInterval(() => {
     if (state.value === 0) {
-      clearInterval(interval);
+      clearInterval(currentInterval);
+      currentInterval = null;
       return;
     }
+
     state.decrement();
-    const responseData = buildResponseData({ state: state, config });
-    config.onChange(responseData);
+
+    config.onChange(buildResponseData({ state: state, config }));
   }, config.timeInterval);
 };
 
-var app = (config) => {
-  events({
-    DOMElement: config.DOMElement,
-    action: () => action(config),
-  });
+const init = (config) => {
+  config.onChange(buildResponseData({ state: state, config }));
+};
 
-  customEvents({
-    DOMElment: config.DOMElement,
-    events: config.events,
-    action: () => action(config),
-  });
+var app = (config) => {
+  try {
+    init(config);
+
+    events({
+      DOMElement: config.DOMElement,
+      action: () => {
+        runIncrement(config);
+        runInterval(config);
+      },
+    });
+
+    customEvents({
+      DOMElment: config.DOMElement,
+      events: config.events,
+      action: () => {
+        runIncrement(config);
+        runInterval(config);
+      },
+    });
+
+    return true;
+  } catch (error) {
+    return false;
+  }
 };
 
 const defaultConfig = {
@@ -87,7 +110,7 @@ var clickometer = (customConfig) => {
   clickometer({
     DOMElement: document,
     animation: true,
-    maxClicks: 5,
+    maxClicks: 10,
     timeInterval: 1000,
     onChange: ({ percentatge }) => {
       document.body.style.backgroundColor = "initial";

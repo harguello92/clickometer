@@ -4,7 +4,7 @@ import clickometer from "./index.js";
   clickometer({
     DOMElement: document,
     animation: true,
-    maxClicks: 5,
+    maxClicks: 10,
     timeInterval: 1000,
     onChange: ({ percentatge }) => {
       document.body.style.backgroundColor = "initial";

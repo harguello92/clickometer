@@ -1,7 +1,20 @@
-import appState from "./state";
+import state from "./state";
 
-description("modules/state", () => {
-  test("should return a initial appState", () => {
-    expect(appState).toBe(Object({}));
+const currentState = state;
+
+describe("State", () => {
+  it("should load initial state", () => {
+    expect(currentState.value).toBe(0);
+  });
+
+  it("should increase and decrease  the state", () => {
+    currentState.increment();
+    expect(currentState.value).toBe(1);
+
+    currentState.increment();
+    expect(currentState.value).toBe(2);
+
+    currentState.decrement();
+    expect(currentState.value).toBe(1);
   });
 });
