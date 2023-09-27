@@ -13,7 +13,7 @@ npm install clickometer
 # Alternatively you can use the script from CDN
 
 ```HTML
-<script async src="https://unpkg.com/clickometer@3.0.0/dist/clickometer.browser.min.js">
+<script async src="https://unpkg.com/clickometer@5.0.0/dist/clickometer.browser.min.js">
 ```
 
 # Usage example
