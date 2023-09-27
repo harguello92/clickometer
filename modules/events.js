@@ -5,7 +5,7 @@ export const events = ({ DOMElement, action }) => {
   bindElement({ DOMElement, event: "click", action });
 };
 
-export const customEvents = ({ DOMElement, events = [], action }) => {
+export const customEvents = ({ DOMElement, events, action }) => {
   events.forEach((event) => {
     bindElement({ DOMElement, event, action });
   });

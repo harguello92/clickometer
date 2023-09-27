@@ -48,7 +48,7 @@ export default (config) => {
 
     customEvents({
       DOMElment: config.DOMElement,
-      events: config.events,
+      events: config.customEvents,
       action: () => {
         runIncrement(config);
         runInterval(config);

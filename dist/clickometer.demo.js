@@ -77,7 +77,7 @@ var app = (config) => {
 
     customEvents({
       DOMElment: config.DOMElement,
-      events: config.events,
+      events: config.customEvents,
       action: () => {
         runIncrement(config);
         runInterval(config);
@@ -91,12 +91,12 @@ var app = (config) => {
 };
 
 const defaultConfig = {
-  DOMElement: document,
+  DOMElement: document.body,
   maxClicks: 5,
   timeInterval: 1000,
   onChange: () => {},
   onExceeded: () => {},
-  events: [],
+  customEvents: [],
 };
 
 const initConfig = (config) => ({ ...defaultConfig, ...config });

@@ -4,22 +4,10 @@ Light library to handle the clicks over DOM element with javascript easily.
 
 # Install
 
-npm
+If you want you can use other npm manager such as yarn, pnpm...
 
 ```BASH
 npm install clickometer
-```
-
-yarn
-
-```BASH
-npm add clickometer
-```
-
-pnpm
-
-```BASH
-pnpm add clickometer
 ```
 
 # Alternatively you can use the script from CDN
@@ -47,3 +35,35 @@ clickometer({
   },
 });
 ```
+
+# Params
+
+#### DOMElement
+
+Type: `HTMLElement`\
+Default: `document.body`
+
+#### maxClicks
+
+Type: `number`\
+Default: `5`
+
+#### timeInterval
+
+Type: `number`\
+Default: `1000`
+
+#### onChange
+
+Type: `Function`\
+Default: `() => {}`
+
+#### onExceeded
+
+Type: `Function`\
+Default: `() => {}`
+
+#### customEvents
+
+Type: `Array`\
+Default: `[]`

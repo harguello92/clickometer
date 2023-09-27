@@ -1,14 +1,14 @@
 {
   "name": "clickometer",
   "author": "harguello92",
-  "version": "4.1.0",
+  "version": "5.0.0",
   "description": "Clickometer is a light library to handle the clicks and do actions in any element",
   "main": "dist/clickometer.min.js",
   "type": "module",
   "license": "MIT",
   "scripts": {
     "dev": "servor dist --reload --browse & rollup -c -w",
-    "build": "rollup -c",
+    "build": "npm run test && rollup -c",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
   "files": [
